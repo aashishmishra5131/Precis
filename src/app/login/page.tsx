@@ -3,7 +3,6 @@ import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
-import { SessionProvider } from 'next-auth/react';
 
 const Login = () => {
   const router = useRouter();
@@ -15,10 +14,10 @@ const Login = () => {
     return null;
   }
   return (
-    <div className="grid place-content-center h-screen bg-slate-100">
+    <div className="grid place-content-center h-screen bg-slate-900 ">
       <div className="flex flex-col justify-center gap-5 items-center h-[50vh] w-[400px] bg-white shadow-md">
-        {/* <img src="/logo.png" alt="" className="h-10 w-auto" /> */}
-        <p className="tet-md font-bold">Login into continue</p>
+        <img src="./logo.png" alt="" className="h-10 w-14 dark:invert border: rounded" />
+        <p className="text-md font-bold text-black">Login to continue</p>
         <div
           className="py-1 px-26 rounded cursor-pointer flex justify-center items-center gap-2 bg-white border-[1px] border-gray-200 font-medium w-5/6"
           onClick={() => signIn("google")}
@@ -28,7 +27,18 @@ const Login = () => {
             className="h-10"
             alt=""
           />
-          <span>Sign in with Google</span>
+          <span className="text-black">Sign in with Google</span>
+        </div>
+        <div
+          className="py-1 px-26 rounded cursor-pointer flex justify-center items-center gap-2 bg-white border-[1px] border-gray-200 font-medium w-5/6"
+          onClick={() => signIn("github")}
+        >
+          <img
+            src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_640.png"
+            className="h-10"
+            alt=""
+          />
+          <span className="text-black">Sign in with GitHub</span>
         </div>
         <Link
           href="/"

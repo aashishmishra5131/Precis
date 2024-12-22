@@ -176,7 +176,7 @@ import {
     createdAt: timestamp("createdAt").defaultNow().notNull(),
   });
   
-  export const clapRelations = relations(clap, ({ one, many }) => ({
+  export const clapRelations = relations(clap, ({ one}) => ({
     author: one(user, {
       fields: [clap.userId],
       references: [user.id],
@@ -209,7 +209,7 @@ import {
     createdAt: timestamp("createdAt").defaultNow().notNull(),
   });
   
-  export const saveRelations = relations(save, ({ one, many }) => ({
+  export const saveRelations = relations(save, ({ one}) => ({
     author: one(user, {
       fields: [save.userId],
       references: [user.id],
