@@ -28,7 +28,7 @@ const NavbarStory = ({ storyId, currentUserName }: Props) => {
       <div className="flex items-center justify-between px-10">
         <div className="flex items-center space-x-3">
           <Link href="/">
-            <Image src="/logo.png" width={40} height={40} alt="Medium logo" />
+            <Image src="/logo.png" width={40} height={40} alt="Précis logo" />
           </Link>
         </div>
         <div className="flex items-center space-x-7">

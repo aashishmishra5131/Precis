@@ -4,6 +4,7 @@ import { toast } from "./ui/use-toast";
 import { contentFormat, topics } from "@/lib/data";
 import Select from "react-select";
 import Image from "next/image";
+import { useRouter } from "next/navigation"; // Import useRouter
 
 type Props = {
   storyId: string;
@@ -11,9 +12,11 @@ type Props = {
   username: string;
   setShowTags: React.Dispatch<React.SetStateAction<boolean>>;
 };
+
 const StoryTags = ({ storyId, publishStory, username, setShowTags }: Props) => {
   const [Story, setStory] = useState<any>();
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
+  const router = useRouter(); // Initialize router
 
   useEffect(() => {
     const fetchStoryById = async () => {
@@ -31,6 +34,12 @@ const StoryTags = ({ storyId, publishStory, username, setShowTags }: Props) => {
     };
     fetchStoryById();
   }, []);
+
+  const handlePublish = () => {
+    publishStory(selectedTopics); // Call publishStory
+    router.push("/"); // Redirect to home page
+  };
+
   return (
     <div className="fixed bg-gray-50 w-full z-20 overflow-auto top-0 left-0 bottom-0 right-0">
       <span className="absolute top-4 right-6 text-3xl cursor-pointer">
@@ -83,7 +92,7 @@ const StoryTags = ({ storyId, publishStory, username, setShowTags }: Props) => {
             classNamePrefix="Add a topic ..."
           />
           <button
-            onClick={() => publishStory(selectedTopics)}
+            onClick={handlePublish} // Use handlePublish
             className="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-full text-white text-sm mt-8"
           >
             Publish Now
