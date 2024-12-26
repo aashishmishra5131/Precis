@@ -21,7 +21,7 @@ export const getUser = async () => {
       return { error: "user not found" };
     }
   } catch (error) {
-    return { error: "user not found" };
+    return error;
   }
   return userDetails;
 };
@@ -36,7 +36,7 @@ export const getUserById = async (userId: string) => {
       return { error: "user not found" };
     }
   } catch (error) {
-    return { error: "user not found" };
+    return error;
   }
   return userDetails;
 };

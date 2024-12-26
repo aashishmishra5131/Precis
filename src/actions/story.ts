@@ -17,7 +17,7 @@ export const CreateStory = async () => {
     }
     console.log(user);
   } catch (error) {
-    return { error: "Story not created" };
+    return error;
   }
   redirect(`/p/${newStory[0].id}`);
 };
@@ -38,7 +38,7 @@ export const getStoryById = async (id: string, publish: boolean) => {
       return { error: "Error on getting story" };
     }
   } catch (error) {
-    return { error: "Error on getting story" };
+    return error;
   }
   return storyDetails;
 };
@@ -69,7 +69,7 @@ export const updateStory = async (storyId: string, content: any) => {
       return { error: "Story not udpated" };
     }
   } catch (error) {
-    return { error: "Story not udpated" };
+    return error;
   }
   revalidatePath(`/p/${storyId}`);
   return { result: update };
@@ -102,7 +102,7 @@ export const publishNewStory = async (storyId: string, topics: string[]) => {
       return { error: "Story not published" };
     }
   } catch (error) {
-    return { error: "Story not published" };
+    return error;
   }
   redirect(`/published/${updateStory?.[0].id}`);
 };
@@ -127,7 +127,7 @@ export const addToFav = async (storyId: string) => {
         .returning();
     }
   } catch (error) {
-    return { error: "not added in fav" };
+    return error;
   }
   revalidatePath(`/published/${storyId}`);
 };
@@ -151,7 +151,7 @@ export const getStories = async (tag: string) => {
       return { error: "Error on getting stories" };
     }
   } catch (error) {
-    return { error: "Error on getting stories" };
+    return error;
   }
   return stories;
 };
@@ -179,7 +179,7 @@ export const getLimitedStories = async (tag: string) => {
       return { error: "Error on getting stories" };
     }
   } catch (error) {
-    return { error: "Error on getting stories" };
+    return error;
   }
   return stories;
 };

@@ -2,7 +2,6 @@ import { getStoryById } from "@/actions/story";
 import { getUser } from "@/actions/user";
 import NavbarStory from "@/components/NavbarStory";
 import NewStory from "@/components/NewStory";
-import { User } from "@/interfaces";
 import React from "react";
 
 const StoryId = async ({ params }: { params: { storyId: string } }) => {

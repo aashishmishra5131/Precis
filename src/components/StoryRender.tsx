@@ -23,7 +23,6 @@ const StoryRender = async ({ username, userImage, publishedStory }: Props) => {
 
   const clapCounts: any = await ClapCount(publishedStory.id);
   const userClaps: any = await clapCountByuser(publishedStory.id);
-  const currentUser: any = await getUser();
 
   const NoOfComments = await NumberOfComments(publishedStory.id);
   const favStatus: any = await checkFav(publishedStory.id);

@@ -13,7 +13,7 @@ const Header = () => {
   console.log(data, status, "data");
 
   const MakeNewStory = async () => {
-    const res = await CreateStory();
+    const res : any = await CreateStory();
     if (res.error) toast({ title: res.error });
   };
   console.log(data?.user?.image,"image");

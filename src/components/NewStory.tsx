@@ -54,6 +54,7 @@ const NewStory = ({ storyId, storyContent }: Props) => {
       await updateStory(storyId, content);
     } catch (error) {
       console.log("content not save");
+      return error;
     }
     setSaving(false);
   };

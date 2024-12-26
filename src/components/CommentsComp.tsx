@@ -22,12 +22,13 @@ const CommentsComp = ({
 
   const AddComments = async () => {
     try {
-      const comment = await commentStory(storyId, content, "");
+      const comment:any = await commentStory(storyId, content, "");
       if (comment?.error) {
         toast({ title: comment.error });
       }
     } catch (error) {
       toast({ title: "Error in story comment" });
+      return error;
     }
   };
   return (

@@ -12,12 +12,13 @@ const CommentArea = ({ setShowCommentArea, commentId, storyId }: Props) => {
 
   const AddReply = async () => {
     try {
-      const comment = await commentStory(storyId, content, commentId);
+      const comment: any = await commentStory(storyId, content, commentId);
       if (comment?.error) {
         toast({ title: comment.error });
       }
     } catch (error) {
       toast({ title: "Error in story comment" });
+      return error;
     }
   };
   return (

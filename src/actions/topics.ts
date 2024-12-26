@@ -65,7 +65,7 @@ export const addRemoveTags = async (tags: any) => {
       response = await db.insert(topics).values(data).returning();
     }
   } catch (error) {
-    return { error: "tags not updated" };
+    return error;
   }
   redirect("/");
 };

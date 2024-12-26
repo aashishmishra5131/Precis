@@ -15,7 +15,7 @@ export const NumberOfComments = async (storyId: string) => {
 
     return response?.[0]?.count || 0;
   } catch (error) {
-    return { error: "Error getting number of comments" };
+    return error;
   }
 };
 
@@ -51,7 +51,7 @@ export const commentStory = async (
       Comment = await db.insert(reply).values(data).returning();
     }
   } catch (error) {
-    return { error: "Error in getting story comment" };
+    return error;
   }
   revalidatePath(`/published/${storyId}`);
 };
@@ -78,7 +78,7 @@ export const getAllComments = async (storyId: string) => {
       return { error: "No Comment" };
     }
   } catch (error) {
-    return { error: "Error getting comments by story" };
+    return error;
   }
   revalidatePath(`published/${storyId}`);
   return Comments;

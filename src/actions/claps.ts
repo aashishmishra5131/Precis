@@ -146,7 +146,7 @@ export const updateCommentOrReply = async (
       claps = await db.insert(clap).values(data).returning();
     }
   } catch (error) {
-    return { error: "clap not updated" };
+    return error;
   }
   return claps?.[0];
 };

@@ -19,7 +19,9 @@ const ImageComp = ({ imageUrl, file, handleSave }: Props) => {
         console.log(imgUrl, "imgUrl");
         setCurrentImageUrl(imgUrl);
       });
-    } catch (error) {}
+    } catch (error) {
+      return error;
+    }
   };
   useEffect(() => {
     updateImage().then(() => {

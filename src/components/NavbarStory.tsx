@@ -15,12 +15,13 @@ const NavbarStory = ({ storyId, currentUserName }: Props) => {
 
   const publishStory = async (topics: string[]) => {
     try {
-      const res = await publishNewStory(storyId, topics);
+      const res : any = await publishNewStory(storyId, topics);
       if (res.error) {
         toast({ title: res.error });
       }
     } catch (error) {
       console.log("Error in publishing the story");
+      return error;
     }
   };
   return (

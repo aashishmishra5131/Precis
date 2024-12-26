@@ -21,7 +21,9 @@ const GetComments = ({ storyId, showCommentComp }: Props) => {
         } else {
           toast({ title: result.error });
         }
-      } catch (error) {}
+      } catch (error) {
+        return error;
+      }
     };
     fetchComments();
   }, [showCommentComp]);

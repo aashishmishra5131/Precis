@@ -20,6 +20,7 @@ const UserEngagement = ({ totalClaps, comment }: Props) => {
         setUserClaps(claps);
       } catch (error) {
         console.log("Error in fetching user claps");
+        return error;
       }
     };
 

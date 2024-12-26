@@ -40,7 +40,7 @@ const ClapCountComp = ({
         await updateCommentOrReply(storyId, commentId, type);
       }
     } catch (error) {
-      console.log("Error while clapping story or comment or reply");
+      console.log("Error while clapping story or comment or reply",error);
       setCurrentClap((prev) => prev - 1);
       setClapByUser((prev) => prev - 1);
     }
