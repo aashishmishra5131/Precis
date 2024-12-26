@@ -31,7 +31,7 @@ export const ClapCount = async (storyId: string, commentId?: string) => {
     return response?.[0]?.clapCount || 0;
   } catch (error) {
     console.log(error);
-    return 0;
+    return error;
   }
 };
 
@@ -72,7 +72,7 @@ export const clapCountByuser = async (storyId: string, commentId?: string) => {
     return response?.[0]?.clapCount || 0;
   } catch (error) {
     console.log(error);
-    return 0;
+    return error;
   }
 };
 
