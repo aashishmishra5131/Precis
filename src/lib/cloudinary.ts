@@ -21,6 +21,6 @@ export const uploadImage = async (formData: FormData) => {
     });
     return res.data.url;
   } catch (error) {
-    return { error: "error in uploading image" };
+    return error;
   }
 };

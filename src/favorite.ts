@@ -5,8 +5,18 @@ import { getUser } from "./actions/user";
 import db from "./db/drizzle";
 import { save } from "./db/schema";
 
+// Define the User type
+interface User {
+  id: string;
+  // Add more properties as needed
+}
+
 export const checkFav = async (storyId: string) => {
-  const user: any = await getUser();
+  const user = (await getUser()) as User | null; // Type assertion
+
+  if (!user) {
+    throw new Error("User not found");
+  }
 
   let fav;
   try {
@@ -14,7 +24,7 @@ export const checkFav = async (storyId: string) => {
       where: and(eq(save.userId, user.id), eq(save.storyId, storyId)),
     });
   } catch (error) {
-    return { status: false };
+    return error;
   }
   return !!fav;
 };

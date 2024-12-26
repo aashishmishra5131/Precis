@@ -30,6 +30,7 @@ const StoryTags = ({ storyId, publishStory, username, setShowTags }: Props) => {
         }
       } catch (error) {
         console.log("Error in fetching data");
+        return error;
       }
     };
     fetchStoryById();

@@ -1,7 +1,7 @@
 export type User = {
-    id: String;
-    name?: String;
-    email: String;
-    emailVerified?: any;
-    image: String;
-  };
+  id: string;
+  name?: string;
+  email: string;
+  emailVerified?: boolean | null;
+  image: string;
+};
