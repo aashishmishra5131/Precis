@@ -36,7 +36,7 @@ export const commentStory = async (
   try {
     await getStoryById(storyId, true);
     if (!commentId) {
-      const data: any = {
+      const data = {
         userId: user.id,
         storyId,
         content,

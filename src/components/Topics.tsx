@@ -22,7 +22,7 @@ const Topics = ({ allTopics, userTags }: Props) => {
               <Plus />
             </Link>
             <Link
-              href="/"
+              href="/addtopics"
               className="px-4 text-gray-400 hover:text-black hover:bg-slate-100 py-2 rounded-sm"
             >
               For you

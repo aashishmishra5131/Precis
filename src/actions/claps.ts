@@ -30,6 +30,7 @@ export const ClapCount = async (storyId: string, commentId?: string) => {
 
     return response?.[0]?.clapCount || 0;
   } catch (error) {
+    console.log(error);
     return 0;
   }
 };
@@ -37,6 +38,7 @@ export const ClapCount = async (storyId: string, commentId?: string) => {
 // clap count by user
 export const clapCountByuser = async (storyId: string, commentId?: string) => {
   const user: any = await getUser();
+  console.log(typeof user,"User type");
   if (!user) {
     return { error: "User not found" };
   }
@@ -69,6 +71,7 @@ export const clapCountByuser = async (storyId: string, commentId?: string) => {
 
     return response?.[0]?.clapCount || 0;
   } catch (error) {
+    console.log(error);
     return 0;
   }
 };
