@@ -4,9 +4,11 @@ import NavbarStory from "@/components/NavbarStory";
 import NewStory from "@/components/NewStory";
 import React from "react";
 
+type Any = any;
+
 const StoryId = async ({ params }: { params: { storyId: string } }) => {
-  const story: any = await getStoryById(params?.storyId, false);
-  const user: any = await getUser();
+  const story: Any = await getStoryById(params?.storyId, false);
+  const user: Any = await getUser();
   console.log(user, "story");
   return (
     <div>

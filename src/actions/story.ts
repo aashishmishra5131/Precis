@@ -6,10 +6,12 @@ import { and, arrayContains, eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+type Any = any;
+
 export const CreateStory = async () => {
   let newStory;
   try {
-    const user: any = await getUser();
+    const user: Any = await getUser();
 
     newStory = await db.insert(story).values({ userId: user.id }).returning();
     if (!newStory.length) {
@@ -44,7 +46,7 @@ export const getStoryById = async (id: string, publish: boolean) => {
 };
 
 // update story
-export const updateStory = async (storyId: string, content: any) => {
+export const updateStory = async (storyId: string, content: Any) => {
   if (!storyId || !content) {
     return { error: "please fill all fields" };
   }
@@ -90,7 +92,7 @@ export const publishNewStory = async (storyId: string, topics: string[]) => {
     return { error: "No story found" };
   }
 
-  let updateStory: any;
+  let updateStory: Any;
 
   try {
     updateStory = await db
@@ -109,7 +111,7 @@ export const publishNewStory = async (storyId: string, topics: string[]) => {
 
 // add to fav
 export const addToFav = async (storyId: string) => {
-  const user: any = await getUser();
+  const user: Any = await getUser();
   let fav;
   try {
     await getStoryById(storyId, true);

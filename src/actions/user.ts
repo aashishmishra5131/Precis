@@ -5,8 +5,10 @@ import { user } from "@/db/schema";
 import { getAuthSession } from "@/lib/auth";
 import { eq } from "drizzle-orm";
 
+type Any = any;
+
 export const getUser = async () => {
-  const session: any = await getAuthSession();
+  const session: Any = await getAuthSession();
   if (!session) {
     return {
       error: "user not found",

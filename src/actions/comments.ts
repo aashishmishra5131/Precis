@@ -6,6 +6,8 @@ import { getUser } from "./user";
 import { getStoryById } from "./story";
 import { revalidatePath } from "next/cache";
 
+type Any = any;
+
 export const NumberOfComments = async (storyId: string) => {
   try {
     const response = await db
@@ -25,7 +27,7 @@ export const commentStory = async (
   content: string,
   commentId?: string
 ) => {
-  const user: any = await getUser();
+  const user: Any = await getUser();
 
   if (!storyId || !content) {
     return { error: "something is missing" };
@@ -40,16 +42,19 @@ export const commentStory = async (
         userId: user.id,
         storyId,
         content,
+
       };
       Comment = await db.insert(comment).values(data).returning();
     } else {
-      const data: any = {
+      const data: Any = {
         userId: user.id,
         commentId,
         content,
       };
       Comment = await db.insert(reply).values(data).returning();
+      console.log(Comment)
     }
+  
   } catch (error) {
     return error;
   }

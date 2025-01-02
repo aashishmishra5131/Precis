@@ -8,7 +8,6 @@ import { save } from "./db/schema";
 // Define the User type
 interface User {
   id: string;
-  // Add more properties as needed
 }
 
 export const checkFav = async (storyId: string) => {

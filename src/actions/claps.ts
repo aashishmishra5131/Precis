@@ -6,6 +6,8 @@ import { and, eq, isNull, sql } from "drizzle-orm";
 import { getUser } from "./user";
 import { getStoryById } from "./story";
 
+type Any = any;
+
 export const ClapCount = async (storyId: string, commentId?: string) => {
   try {
     if (commentId) {
@@ -37,7 +39,7 @@ export const ClapCount = async (storyId: string, commentId?: string) => {
 
 // clap count by user
 export const clapCountByuser = async (storyId: string, commentId?: string) => {
-  const user: any = await getUser();
+  const user: Any = await getUser();
   console.log(typeof user,"User type");
   if (!user) {
     return { error: "User not found" };
@@ -78,7 +80,7 @@ export const clapCountByuser = async (storyId: string, commentId?: string) => {
 
 // update clap
 export const updateClapStoryCount = async (storyId: string) => {
-  const user: any = await getUser();
+  const user: Any = await getUser();
 
   let claps;
   try {
@@ -100,7 +102,7 @@ export const updateClapStoryCount = async (storyId: string) => {
         .where(eq(clap.id, clapped.id))
         .returning();
     } else {
-      const data: any = { userId: user.id, clapCount: 1, storyId };
+      const data: Any = { userId: user.id, clapCount: 1, storyId };
       claps = await db.insert(clap).values(data).returning();
     }
   } catch (error) {
@@ -116,7 +118,7 @@ export const updateCommentOrReply = async (
   id: string,
   type?: string
 ) => {
-  const user: any = await getUser();
+  const user: Any = await getUser();
 
   let claps;
   try {
@@ -137,7 +139,7 @@ export const updateCommentOrReply = async (
         .where(eq(clap.id, clapped.id))
         .returning();
     } else {
-      const data: any = {
+      const data: Any = {
         userId: user.id,
         clapCount: 1,
         storyId,

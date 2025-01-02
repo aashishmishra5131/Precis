@@ -9,8 +9,13 @@ const Login = () => {
   const { status } = useSession();
   console.log(status);
 
+  React.useEffect(() => {
+    if (status === "authenticated") {
+      router.push("/");
+    }
+  }, [status, router]);
+
   if (status === "authenticated") {
-    router.push("/");
     return null;
   }
   return (

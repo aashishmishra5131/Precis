@@ -6,6 +6,8 @@ import { getUser } from "./user";
 import { eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
 
+type Any = any;
+
 export const getUniqueTopics = async () => {
   try {
     const allStoryTopics = await db
@@ -28,10 +30,10 @@ export const getUniqueTopics = async () => {
 };
 
 export const SelectedTopics = async () => {
-  const user: any = await getUser();
+  const user: Any = await getUser();
 
   try {
-    const tags: any = await db.query.topics.findFirst({
+    const tags: Any = await db.query.topics.findFirst({
       where: eq(topics.userId, user.id),
     });
 
@@ -42,16 +44,16 @@ export const SelectedTopics = async () => {
 
     return formatedTopics || [];
   } catch (error) {
-    return [];
+    return error;
   }
 };
 
-export const addRemoveTags = async (tags: any) => {
-  const user: any = await getUser();
+export const addRemoveTags = async (tags: Any) => {
+  const user: Any = await getUser();
 
   let response;
   try {
-    const tag: any = await db.query.topics.findFirst({
+    const tag: Any = await db.query.topics.findFirst({
       where: eq(topics.userId, user.id),
     });
     if (tag) {
@@ -61,8 +63,9 @@ export const addRemoveTags = async (tags: any) => {
         .where(eq(topics.id, tag.id))
         .returning();
     } else {
-      const data: any = { userId: user.id, topics: tags };
+      const data: Any = { userId: user.id, topics: tags };
       response = await db.insert(topics).values(data).returning();
+      return response;
     }
   } catch (error) {
     return error;

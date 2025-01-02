@@ -5,7 +5,8 @@ import React, { useState } from "react";
 import Select from "react-select";
 import { toast } from "./ui/use-toast";
 
-const AddTags = ({ userTags }: any) => {
+type Any = any;
+const AddTags = ({ userTags }: Any) => {
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
 
   const AdduserTags = async () => {
