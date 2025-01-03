@@ -15,7 +15,7 @@ export default async function Home({
   const limitedStories = await getLimitedStories(searchParams?.tag);
   console.log(limitedStories, "stories");
   return (
-    <div className="w-full max-w-6xl mx-auto px-6">
+    <div className="w-full max-w-6xl mx-auto px-7">
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.5fr] gap-20 justify-between">
         <div className="py-8">
           <Topics allTopics={allTopics} userTags={getSelectedTopics} />
